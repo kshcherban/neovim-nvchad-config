@@ -13,3 +13,5 @@ Then run nvim like below and install needed tools with `:Mason`:
 ```bash
 nvim +PackerSync
 ```
+
+![](./screen.png)
