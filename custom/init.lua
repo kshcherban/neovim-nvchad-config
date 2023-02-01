@@ -6,12 +6,23 @@ vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.showtabline = 2
 vim.opt.incsearch = false
--- autoformat on save
 vim.g.terraform_fmt_on_save = 1
-vim.g.rustfmt_autosave = 1
-vim.g.go_fmt_autosave = 1
 -- disable mouse in insert mode
 vim.opt.mouse = 'nv'
 --- display bogus symbols
 vim.opt.list = true
 vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
+-- copy full path to buffer
+vim.api.nvim_create_user_command("CopyFullPath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+-- copy rel path to buffer
+vim.api.nvim_create_user_command("CopyRelPath", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+-- vim.g.luasnippets_path = ""
