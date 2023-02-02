@@ -14,11 +14,11 @@ fi
 # install nvchad
 ${GIT_CLONE} https://github.com/NvChad/NvChad "${HOME}/.config/nvim"
 
-# vim-go autoformatting and documentation helpers
+# terraform autoformatting
 ${GIT_CLONE} https://github.com/hashivim/vim-terraform.git ${PLUGIN_PATH}/vim-terraform
 
-# terraform autoformatting
-${GIT_CLONE} https://github.com/fatih/vim-go.git ${PLUGIN_PATH}/vim-terraform
+# vim-go autoformatting and documentation helpers
+${GIT_CLONE} https://github.com/fatih/vim-go.git ${PLUGIN_PATH}/vim-go
 
 # syntax highlighting for the most filetypes, neovim missed Jenkinsfile highlighting
 ${GIT_CLONE} https://github.com/sheerun/vim-polyglot.git ${PLUGIN_PATH}/vim-polyglot
