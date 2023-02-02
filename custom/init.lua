@@ -3,7 +3,7 @@
 -- you can even override default options here (core/options.lua)
 
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+vim.opt.linebreak = true
 vim.opt.showtabline = 2
 vim.opt.incsearch = false
 vim.g.terraform_fmt_on_save = 1
