@@ -16,7 +16,18 @@ M["neovim/nvim-lspconfig"] = {
 
     local lspconfig = require "lspconfig"
 
-    local servers = { "html", "cssls", "svelte", "tsserver", "emmet_ls", "gopls", "marksman", "rust_analyzer", "terraformls" }
+    local servers = { 
+      "html",
+      "cssls",
+      "svelte",
+      "tsserver",
+      "emmet_ls",
+      "gopls",
+      "marksman",
+      "rust_analyzer",
+      "terraformls",
+      "pylsp",
+    }
 
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
