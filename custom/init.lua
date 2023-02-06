@@ -12,6 +12,12 @@ vim.opt.mouse = 'nv'
 --- display bogus symbols
 vim.opt.list = true
 vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
+--- set python
+vim.g.loaded_python3_provider = nil
+-- vim.cmd("runtime python3_provider")
+-- vim.g.python3_host_prog = '~/.local/venv/nvim/bin/python'
+--- run black on save
+vim.cmd [[autocmd BufWritePre *.py call Black()]]
 -- copy full path to buffer
 vim.api.nvim_create_user_command("CopyFullPath", function()
   local path = vim.fn.expand("%:p")

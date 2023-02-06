@@ -87,4 +87,6 @@ M["terrastruct/d2-vim"] = {}
 
 M["mbbill/undotree"] = {}
 
+M["averms/black-nvim"] = {}
+
 return M
