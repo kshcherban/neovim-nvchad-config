@@ -16,7 +16,7 @@ M["neovim/nvim-lspconfig"] = {
 
     local lspconfig = require "lspconfig"
 
-    local servers = { 
+    local servers = {
       "html",
       "cssls",
       "svelte",
@@ -88,5 +88,7 @@ M["terrastruct/d2-vim"] = {}
 M["mbbill/undotree"] = {}
 
 M["averms/black-nvim"] = {}
+
+M["tpope/vim-fugitive"] = {}
 
 return M
