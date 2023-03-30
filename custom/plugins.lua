@@ -91,4 +91,6 @@ M["averms/black-nvim"] = {}
 
 M["tpope/vim-fugitive"] = {}
 
+M["sindrets/diffview.nvim"] = {}
+
 return M
