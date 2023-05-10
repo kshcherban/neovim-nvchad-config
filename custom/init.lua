@@ -16,6 +16,8 @@ vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
 vim.g.loaded_python3_provider = nil
 -- vim.cmd("runtime python3_provider")
 -- vim.g.python3_host_prog = '~/.local/venv/nvim/bin/python'
+--- format all files
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 --- run black on save
 vim.cmd [[autocmd BufWritePre *.py call Black()]]
 -- copy full path to buffer
