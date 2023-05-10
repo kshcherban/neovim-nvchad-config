@@ -58,9 +58,7 @@ M["jose-elias-alvarez/null-ls.nvim"] = {
       b.formatting.gofumpt.with {
         filetype = "go"
       },
-
-      b.formatting.goimports,
-
+      
       b.formatting.stylua,
       b.formatting.rustfmt.with {
         filetype = "rust",
