@@ -55,8 +55,10 @@ M["jose-elias-alvarez/null-ls.nvim"] = {
         extra_filetypes = { "svelte", "md", "json" },
       },
 
-      b.formatting.gofumpt,
-      -- b.formatting.goimports_reviser,
+      b.formatting.gofumpt.with {
+        filetype = "go"
+      },
+
       b.formatting.goimports,
 
       b.formatting.stylua,
