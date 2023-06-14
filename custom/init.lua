@@ -34,3 +34,6 @@ vim.api.nvim_create_user_command("CopyRelPath", function()
 end, {})
 
 -- vim.g.luasnippets_path = ""
+
+-- set custom comment string to work around broken Jenkinsfile support
+vim.bo.commentstring = '//%s'
