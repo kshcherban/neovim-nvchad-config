@@ -12,7 +12,7 @@ if [ -d ${NVIM_CONFIG} ]; then
 fi
 
 # install nvchad
-${GIT_CLONE} https://github.com/NvChad/NvChad "${HOME}/.config/nvim"
+${GIT_CLONE} --branch=v2.0 https://github.com/NvChad/NvChad "${HOME}/.config/nvim"
 
 # terraform autoformatting
 ${GIT_CLONE} https://github.com/hashivim/vim-terraform.git ${PLUGIN_PATH}/vim-terraform
