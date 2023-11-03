@@ -13,13 +13,13 @@ vim.opt.mouse = 'nv'
 vim.opt.list = true
 vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
 --- set python
-vim.g.loaded_python3_provider = nil
+-- vim.g.loaded_python3_provider = nil
 -- vim.cmd("runtime python3_provider")
 -- vim.g.python3_host_prog = '~/.local/venv/nvim/bin/python'
 --- format all files
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 --- run black on save
-vim.cmd [[autocmd BufWritePre *.py call Black()]]
+-- vim.cmd [[autocmd BufWritePre *.py call Black()]]
 -- copy full path to buffer
 vim.api.nvim_create_user_command("CopyFullPath", function()
   local path = vim.fn.expand("%:p")
@@ -37,3 +37,5 @@ end, {})
 
 -- set custom comment string to work around broken Jenkinsfile support
 vim.bo.commentstring = '//%s'
+
+vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)

@@ -1,96 +1,81 @@
-local M = {}
+local overrides = require("custom.configs.overrides")
 
-M["max397574/better-escape.nvim"] = {
-  event = "InsertEnter",
-  config = function()
-    require("better_escape").setup()
-  end,
-}
+---@type NvPluginSpec[]
+local plugins = {
 
-M["tpope/vim-surround"] = {}
+  -- Override plugin definition options
 
-M["neovim/nvim-lspconfig"] = {
-  config = function()
-    local on_attach = require("plugins.configs.lspconfig").on_attach
-    local capabilities = require("plugins.configs.lspconfig").capabilities
-
-    local lspconfig = require "lspconfig"
-
-    local servers = {
-      "html",
-      "cssls",
-      "svelte",
-      "tsserver",
-      "emmet_ls",
-      "gopls",
-      "marksman",
-      "rust_analyzer",
-      "terraformls",
-      "pylsp",
-    }
-
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
-    end
-  end,
-}
-
-M["jose-elias-alvarez/null-ls.nvim"] = {
-  after = "nvim-lspconfig",
-
-  config = function()
-    local present, null_ls = pcall(require, "null-ls")
-    if not present then
-      return
-    end
-
-    local b = null_ls.builtins
-
-    local sources = {
-      -- webdev stuff
-      b.formatting.prettier.with {
-        extra_filetypes = { "svelte", "md", "json" },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- format & linting
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require "custom.configs.null-ls"
+        end,
       },
+    },
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end, -- Override to setup mason-lspconfig
+  },
 
-      b.formatting.gofumpt.with {
-        filetype = "go"
-      },
-      
-      b.formatting.stylua,
-      b.formatting.rustfmt.with {
-        filetype = "rust",
-      },
-    }
+  -- override plugin configs
+  {
+    "williamboman/mason.nvim",
+    opts = overrides.mason
+  },
 
-    null_ls.setup {
-      debug = true,
-      sources = sources,
-    }
-  end,
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = overrides.treesitter,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvimtree,
+  },
+  {
+    "averms/black-nvim"
+  },
+  {
+    "tpope/vim-fugitive"
+  },
+  {
+    "sindrets/diffview.nvim"
+  },
+
+  -- Install a plugin
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+
+  -- LSP fancy diagnostics
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
+
+  -- To make a plugin not be loaded
+  -- {
+  --   "NvChad/nvim-colorizer.lua",
+  --   enabled = false
+  -- },
+
+  -- All NvChad plugins are lazy-loaded by default
+  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+  -- {
+  --   "mg979/vim-visual-multi",
+  --   lazy = false,
+  -- }
 }
 
-M["folke/which-key.nvim"] = {
-  disable = false,
-}
-
-M["ggandor/leap.nvim"] = {
-  config = function()
-    local leap = require "leap"
-    leap.add_default_mappings()
-  end,
-}
-
-M["terrastruct/d2-vim"] = {}
-
-M["mbbill/undotree"] = {}
-
-M["averms/black-nvim"] = {}
-
-M["tpope/vim-fugitive"] = {}
-
-M["sindrets/diffview.nvim"] = {}
-
-return M
+return plugins
