@@ -9,6 +9,7 @@ M.treesitter = {
     "python",
     "go",
     "bash",
+    "terraform",
   },
   indent = {
     enable = true,
