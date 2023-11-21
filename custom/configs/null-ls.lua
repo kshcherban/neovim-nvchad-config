@@ -19,6 +19,9 @@ local sources = {
 
   -- rust
   b.formatting.rustfmt,
+  
+  -- terraform
+  b.formatting.terraform_fmt,
 }
 
 null_ls.setup {
