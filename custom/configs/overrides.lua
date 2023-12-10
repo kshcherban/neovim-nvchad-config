@@ -26,11 +26,12 @@ M.mason = {
 
     "terraform-ls",
     "black",
-    "python-lsp-server",
+    "pyright",
     "gopls",
     "marksman",
     "shellcheck",
     "rust-analyzer",
+    "bash-language-server",
   },
 }
 
