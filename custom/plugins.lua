@@ -89,6 +89,13 @@ local plugins = {
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = { tex = '' }}))
     end
   },
+  -- Github copilot integration
+  {
+    "zbirenbaum/copilot.lua",
+      event = "InsertEnter",
+      opts = overrides.copilot,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
