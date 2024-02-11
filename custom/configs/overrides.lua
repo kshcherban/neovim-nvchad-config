@@ -57,6 +57,9 @@ M.copilot = {
   suggestion = {
     auto_trigger = true,
   },
+  filetypes = {
+    yaml = true,
+  },
 }
 
 return M
