@@ -9,6 +9,7 @@ M.treesitter = {
     "python",
     "go",
     "bash",
+    "hcl",
     "terraform",
   },
   indent = {
@@ -60,6 +61,22 @@ M.copilot = {
   filetypes = {
     yaml = true,
   },
+}
+
+local cmp = require("cmp")
+
+M.cmp = {
+  completion = {
+    completeopt = "menu,menuone,noinsert,noselect",
+  },
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  })
 }
 
 return M

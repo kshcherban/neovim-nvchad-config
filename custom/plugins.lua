@@ -44,7 +44,8 @@ local plugins = {
     "tpope/vim-fugitive"
   },
   {
-    "sindrets/diffview.nvim"
+    "sindrets/diffview.nvim",
+    lazy = false,
   },
 
   -- Install a plugin
@@ -63,38 +64,36 @@ local plugins = {
     opts = {},
   },
 
+  -- Terraform highlighting
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-    config = function()
-      local cmp = require'cmp'
-
-      cmp.setup({
-        mapping = {
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          },
-          sources = {
-            { name = 'nvim_lsp' },
-            { name = 'path' },
-            -- other sources
-          },
-          window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
-          },
-        })
-
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = { tex = '' }}))
-    end
-  },
-  -- Github copilot integration
+    "nathom/filetype.nvim",
+    lazy = false,
+     config = function()
+       require("filetype").setup {
+         overrides = {
+           extensions = {
+             tf = "terraform",
+             tfvars = "terraform",
+             tfstate = "json",
+             sh = "sh",
+             sql = "sql",
+           },
+            complex = {
+              ['.*/.bash.*'] = "sh"
+            },
+         },
+       }
+     end,
+   },
   {
     "zbirenbaum/copilot.lua",
       event = "InsertEnter",
       opts = overrides.copilot,
   },
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  -- },
 
   -- To make a plugin not be loaded
   -- {
@@ -109,6 +108,16 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+
+  { "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip"
+    },
+    opts = overrides.cmp,
+  },
+
 }
 
 return plugins
