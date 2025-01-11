@@ -15,11 +15,12 @@ local sources = {
   b.formatting.clang_format,
 
   -- python
+  b.formatting.puff,
   b.formatting.black,
 
   -- rust
   b.formatting.rustfmt,
-  
+
   -- terraform
   b.formatting.terraform_fmt,
 }

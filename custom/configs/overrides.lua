@@ -26,6 +26,7 @@ M.mason = {
     "lua-language-server",
 
     "terraform-ls",
+    "puff",
     "black",
     "pyright",
     "gopls",
