@@ -15,7 +15,7 @@ local sources = {
   b.formatting.clang_format,
 
   -- python
-  b.formatting.puff,
+  b.formatting.ruff,
   b.formatting.black,
 
   -- rust
