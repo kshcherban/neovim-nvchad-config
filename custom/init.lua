@@ -33,6 +33,14 @@ vim.api.nvim_create_user_command("CopyRelPath", function()
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
+-- proper syntax highlighting for terraform
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "hcl"
+  }
+})
+
 -- vim.g.luasnippets_path = ""
 
 -- set custom comment string to work around broken Jenkinsfile support

@@ -73,26 +73,27 @@ local plugins = {
   },
 
   -- Terraform highlighting
-  {
-    "nathom/filetype.nvim",
-    lazy = false,
-     config = function()
-       require("filetype").setup {
-         overrides = {
-           extensions = {
-             tf = "terraform",
-             tfvars = "terraform",
-             tfstate = "json",
-             sh = "sh",
-             sql = "sql",
-           },
-            complex = {
-              ['.*/.bash.*'] = "sh"
-            },
-         },
-       }
-     end,
-   },
+  -- {
+  --   "nathom/filetype.nvim",
+  --   lazy = false,
+  --    config = function()
+  --      require("filetype").setup {
+  --        overrides = {
+  --          extensions = {
+  --            tf = "terraform",
+  --            tfvars = "terraform",
+  --            tfstate = "json",
+  --            sh = "sh",
+  --            sql = "sql",
+  --          },
+  --           complex = {
+  --             ['.*/.bash.*'] = "sh"
+  --           },
+  --        },
+  --      }
+  --    end,
+  --  },
+
   {
     "zbirenbaum/copilot.lua",
       event = "InsertEnter",
