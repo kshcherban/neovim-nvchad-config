@@ -9,8 +9,8 @@ local M = {}
 --   theme = "onenord",
 -- }
 --
-M.plugins = "custom.plugins"
+-- M.plugins = "plugins"
 
-M.mappings = require "custom.mappings"
+-- M.mappings = require "mappings"
 
 return M

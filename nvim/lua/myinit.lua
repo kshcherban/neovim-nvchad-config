@@ -20,6 +20,7 @@ vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 --- run black on save
 -- vim.cmd [[autocmd BufWritePre *.py call Black()]]
+
 -- copy full path to buffer
 vim.api.nvim_create_user_command("CopyFullPath", function()
   local path = vim.fn.expand("%:p")
@@ -37,7 +38,7 @@ end, {})
 vim.filetype.add({
   extension = {
     tf = "terraform",
-    tfvars = "hcl"
+    tfvars = "terraform-vars"
   }
 })
 
@@ -47,3 +48,13 @@ vim.filetype.add({
 vim.bo.commentstring = '//%s'
 
 vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+
+vim.api.nvim_create_user_command("ToogleAutopairs", function()
+    local autopairs = require'nvim-autopairs'
+
+    if autopairs.state.disable then
+        autopairs.enable()
+    else
+        autopairs.disable()
+    end
+end, {})

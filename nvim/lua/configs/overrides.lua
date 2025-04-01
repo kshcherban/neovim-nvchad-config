@@ -24,7 +24,6 @@ M.mason = {
   ensure_installed = {
     -- lua stuff
     "lua-language-server",
-
     "terraform-ls",
     "ruff",
     "black",
