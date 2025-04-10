@@ -11,4 +11,5 @@ if [ -d ${NVIM_CONFIG} ]; then
   mv ${NVIM_CONFIG} "${NVIM_CONFIG}.bak"
 fi
 
-rsync -av ./nvim/ "${NVIM_CONFIG}/"
+rm -rf "${HOME}/.local/share/nvim"
+rsync --delete -av ./nvim/ "${NVIM_CONFIG}/"
