@@ -59,6 +59,13 @@ vim.api.nvim_create_user_command("ToogleAutopairs", function()
     end
 end, {})
 
+-- Define highlight groups for diagnostics with curly underlines
+vim.cmd([[
+  highlight DiagnosticUnderlineError gui=undercurl guisp=Red
+  highlight DiagnosticUnderlineWarn gui=undercurl guisp=Orange
+  highlight DiagnosticUnderlineInfo gui=undercurl guisp=LightBlue
+  highlight DiagnosticUnderlineHint gui=undercurl guisp=LightGrey
+]])
 -- Configure diagnostic display on hover
 vim.diagnostic.config({
   virtual_text = false,    -- Show diagnostic messages as virtual text
