@@ -58,3 +58,36 @@ vim.api.nvim_create_user_command("ToogleAutopairs", function()
         autopairs.disable()
     end
 end, {})
+
+-- Configure diagnostic display on hover
+vim.diagnostic.config({
+  virtual_text = false,    -- Show diagnostic messages as virtual text
+  signs = true,           -- Show diagnostic signs in the sign column
+  underline = true,       -- Underline text with diagnostics
+  update_in_insert = false, -- Don't update diagnostics in insert mode
+  severity_sort = true,   -- Sort diagnostics by severity
+  float = {
+    focusable = false,    -- Make the hover window non-focusable
+    style = "minimal",    -- Minimal style for the hover window
+    border = "rounded",   -- Add a rounded border
+    source = "always",    -- Always show the source of the diagnostic
+    header = "",          -- No header
+    prefix = "",          -- No prefix
+  },
+})
+
+-- Set up hover handler
+vim.o.updatetime = 250  -- Reduce updatetime for a more responsive experience
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = "rounded",
+      source = "always",
+      prefix = "",
+      scope = "cursor",
+    })
+  end,
+})
