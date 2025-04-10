@@ -1,19 +1,9 @@
 require "nvchad.mappings"
-local M = {}
 
-M.custom = {
-  n = {
-    ["<C-d>"] = { "<C-d>zz", "jump half screen down" },
-    ["<C-u>"] = { "<C-u>zz", "jump half screen up" },
-    ["n"] = { "nzz", "jump to next occurence" },
-    ["N"] = { "Nzz", "jump to previous occurence" },
-  },
-}
+local map = vim.keymap.set
 
-M.nvimtree = {
-  n = {
-    ["<leader>t"] = { vim.cmd.NvimTreeToggle, "toggle NvimTree" },
-  },
-}
-
-return M
+map("n", "<leader>t", "<cmd> NvimTreeToggle <cr>", { desc = "toggle NvimTree" })
+map("n", "<C-d>", "<C-d>zz", { desc = "jump half screen down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "jump half screen up" })
+-- map("n", "n", "nzz", { desc = "jump to next occurence" })
+-- map("n", "N", "Nzz", { desc = "jump to previous occurence" })
