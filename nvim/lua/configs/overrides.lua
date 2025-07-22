@@ -27,13 +27,12 @@ M.mason = {
     "terraform-ls",
     "ruff",
     "pyright",
-    "black",
-    "pyright",
     "gopls",
     "marksman",
     "shellcheck",
     "rust-analyzer",
     "bash-language-server",
+    "groovy-language-server", -- for jenkins
   },
 }
 
