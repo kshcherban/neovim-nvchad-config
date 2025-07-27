@@ -32,7 +32,9 @@ M.mason = {
     "shellcheck",
     "rust-analyzer",
     "bash-language-server",
-    "groovy-language-server", -- for jenkins
+    -- for jenkins
+    "npm-groovy-lint", -- format groovy files
+    "groovy-language-server",
   },
 }
 
