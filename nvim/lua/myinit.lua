@@ -8,10 +8,10 @@ vim.opt.showtabline = 2
 vim.opt.incsearch = false
 vim.g.terraform_fmt_on_save = 1
 -- disable mouse in insert mode
-vim.opt.mouse = 'nv'
+vim.opt.mouse = "nv"
 --- display bogus symbols
 vim.opt.list = true
-vim.opt.listchars:append({tab = '→·', trail = '·', nbsp = '¬'})
+vim.opt.listchars:append { tab = "→·", trail = "·", nbsp = "¬" }
 --- set python
 -- vim.g.loaded_python3_provider = nil
 -- vim.cmd("runtime python3_provider")
@@ -23,68 +23,70 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- copy full path to buffer
 vim.api.nvim_create_user_command("CopyFullPath", function()
-  local path = vim.fn.expand("%:p")
+  local path = vim.fn.expand "%:p"
   vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 -- copy rel path to buffer
 vim.api.nvim_create_user_command("CopyRelPath", function()
-  local path = vim.fn.expand("%")
+  local path = vim.fn.expand "%"
   vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- proper syntax highlighting for terraform
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     tf = "terraform",
-    tfvars = "terraform-vars"
-  }
-})
+    tfvars = "terraform-vars",
+  },
+}
 
 -- vim.g.luasnippets_path = ""
 
 -- set custom comment string to work around broken Jenkinsfile support
-vim.bo.commentstring = '//%s'
+vim.bo.commentstring = "//%s"
 
-vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<leader>xx", function()
+  require("trouble").toggle()
+end)
 
 vim.api.nvim_create_user_command("ToogleAutopairs", function()
-    local autopairs = require'nvim-autopairs'
+  local autopairs = require "nvim-autopairs"
 
-    if autopairs.state.disable then
-        autopairs.enable()
-    else
-        autopairs.disable()
-    end
+  if autopairs.state.disable then
+    autopairs.enable()
+  else
+    autopairs.disable()
+  end
 end, {})
 
 -- Define highlight groups for diagnostics with curly underlines
-vim.cmd([[
+vim.cmd [[
   highlight DiagnosticUnderlineError gui=undercurl guisp=Red
   highlight DiagnosticUnderlineWarn gui=undercurl guisp=Orange
   highlight DiagnosticUnderlineInfo gui=undercurl guisp=LightBlue
   highlight DiagnosticUnderlineHint gui=undercurl guisp=LightGrey
-]])
+]]
 -- Configure diagnostic display on hover
-vim.diagnostic.config({
-  virtual_text = false,    -- Show diagnostic messages as virtual text
-  signs = true,           -- Show diagnostic signs in the sign column
-  underline = true,       -- Underline text with diagnostics
+vim.diagnostic.config {
+  virtual_text = false, -- Show diagnostic messages as virtual text
+  signs = true, -- Show diagnostic signs in the sign column
+  underline = true, -- Underline text with diagnostics
   update_in_insert = false, -- Don't update diagnostics in insert mode
-  severity_sort = true,   -- Sort diagnostics by severity
+  severity_sort = true, -- Sort diagnostics by severity
   float = {
-    focusable = false,    -- Make the hover window non-focusable
-    style = "minimal",    -- Minimal style for the hover window
-    border = "rounded",   -- Add a rounded border
-    source = "always",    -- Always show the source of the diagnostic
-    header = "",          -- No header
-    prefix = "",          -- No prefix
+    focusable = false, -- Make the hover window non-focusable
+    style = "minimal", -- Minimal style for the hover window
+    border = "rounded", -- Add a rounded border
+    source = "always", -- Always show the source of the diagnostic
+    header = "", -- No header
+    prefix = "", -- No prefix
   },
-})
+}
 
 -- Set up hover handler
-vim.o.updatetime = 250  -- Reduce updatetime for a more responsive experience
+vim.o.updatetime = 250 -- Reduce updatetime for a more responsive experience
 vim.api.nvim_create_autocmd("CursorHold", {
   buffer = bufnr,
   callback = function()
@@ -96,5 +98,15 @@ vim.api.nvim_create_autocmd("CursorHold", {
       prefix = "",
       scope = "cursor",
     })
+  end,
+})
+
+-- 4 spaces for indentation of groovy files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "groovy",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.expandtab = true
   end,
 })
