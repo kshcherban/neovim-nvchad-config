@@ -38,3 +38,21 @@ lspconfig.ruff.setup {
   end,
   capabilities = capabilities,
 }
+
+lspconfig.groovyls.setup {
+  cmd = {
+    "java",
+    "-jar",
+    vim.fn.expand "$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar",
+  },
+  filetypes = { "groovy", "Jenkinsfile" },
+  -- settings = {
+  --   groovy = {
+  --     classpath = {
+  --       "/Users/kshcherban/repos/wkda/jenkins-libraries-devops",
+  --       "/Users/kshcherban/repos/wkda/jenkins-libraries-centralize-deployments",
+  --     },
+  --   },
+  -- },
+  -- root_dir = lspconfig.util.root_pattern("Jenkinsfile", ".git", "vars/", "src/"),
+}

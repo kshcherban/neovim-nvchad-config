@@ -56,6 +56,14 @@ M.nvimtree = {
   view = {
     adaptive_size = true,
   },
+  -- don't ask for window when opening files
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = false,
+      },
+    },
+  },
 }
 
 M.copilot = {
@@ -69,7 +77,7 @@ M.copilot = {
   },
 }
 
-local cmp = require("cmp")
+local cmp = require "cmp"
 
 M.cmp = {
   completion = {
@@ -80,9 +88,9 @@ M.cmp = {
       require("luasnip").lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<CR>'] = cmp.mapping.confirm({ select = false }),
-  })
+  mapping = cmp.mapping.preset.insert {
+    ["<CR>"] = cmp.mapping.confirm { select = false },
+  },
 }
 
 return M
