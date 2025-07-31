@@ -113,6 +113,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- configure code folding
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevelstart = -1 -- open all folds by default
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldcolumn = "1"
+vim.opt.foldlevelstart = 99 -- open all folds by default

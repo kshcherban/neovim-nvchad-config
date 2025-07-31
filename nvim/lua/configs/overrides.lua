@@ -11,6 +11,7 @@ M.treesitter = {
     "bash",
     "hcl",
     "terraform",
+    "groovy",
   },
   indent = {
     enable = true,
