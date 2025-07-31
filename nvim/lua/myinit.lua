@@ -110,3 +110,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = true
   end,
 })
+
+-- configure code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = -1 -- open all folds by default
+vim.opt.foldcolumn = "1"
