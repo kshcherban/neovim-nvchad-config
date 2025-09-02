@@ -116,3 +116,6 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldcolumn = "1"
 vim.opt.foldlevelstart = 99 -- open all folds by default
+
+-- fix syntax highlighting flickering between windows https://github.com/neovim/neovim/issues/32660
+vim.g._ts_force_sync_parsing = true
