@@ -1,4 +1,4 @@
-local overrides = require("configs.overrides")
+local overrides = require "configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -8,7 +8,7 @@ local plugins = {
   -- Override to setup mason-lspconfig-
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -29,7 +29,7 @@ local plugins = {
     opts = overrides.nvimtree,
   },
   {
-    "tpope/vim-fugitive"
+    "tpope/vim-fugitive",
   },
   {
     "sindrets/diffview.nvim",
@@ -57,7 +57,7 @@ local plugins = {
         "<cmd>Trouble diagnostics toggle<cr>",
         desc = "Diagnostics (Trouble)",
       },
-    }
+    },
   },
 
   -- Terraform highlighting
@@ -84,8 +84,8 @@ local plugins = {
 
   {
     "zbirenbaum/copilot.lua",
-      event = "InsertEnter",
-      opts = overrides.copilot,
+    event = "InsertEnter",
+    opts = overrides.copilot,
   },
   -- {
   --   "github/copilot.vim",
@@ -106,15 +106,22 @@ local plugins = {
   --   lazy = false,
   -- }
 
-  { "hrsh7th/nvim-cmp",
+  {
+    "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip"
+      "saadparwaiz1/cmp_luasnip",
     },
     opts = overrides.cmp,
   },
 
+  -- Show git blame info on line hover
+  {
+    "f-person/git-blame.nvim",
+    -- load the plugin at startup
+    event = "VeryLazy",
+  },
 }
 
 return plugins

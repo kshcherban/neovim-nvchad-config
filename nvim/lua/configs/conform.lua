@@ -11,6 +11,12 @@ local options = {
     timeout_ms = 3000,
     lsp_fallback = true,
   },
+
+  formatters = {
+    ["npm-groovy-lint"] = {
+      prepend_args = { "--javaexecutable", "/opt/homebrew/opt/openjdk@17/bin/java" },
+    },
+  },
 }
 
 return options
