@@ -48,8 +48,8 @@ vim.filetype.add {
 vim.bo.commentstring = "//%s"
 
 vim.keymap.set("n", "<leader>xx", function()
-  require("trouble").toggle()
-end)
+  require("trouble").toggle "diagnostics"
+end, { desc = "Toggle Trouble Diagnostics" })
 
 vim.api.nvim_create_user_command("ToogleAutopairs", function()
   local autopairs = require "nvim-autopairs"
