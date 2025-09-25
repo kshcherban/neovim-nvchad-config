@@ -1,7 +1,8 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    groovy = { "npm-groovy-lint" },
+    go = { "gofumpt" },
+    -- groovy = { "npm-groovy-lint" },
     -- css = { "prettier" },
     -- html = { "prettier" },
   },

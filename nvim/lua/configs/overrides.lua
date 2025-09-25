@@ -57,6 +57,12 @@ M.nvimtree = {
   view = {
     adaptive_size = true,
   },
+
+  filters = {
+    dotfiles = false,
+    custom = { "^.git$" },
+  },
+
   -- don't ask for window when opening files
   actions = {
     open_file = {
