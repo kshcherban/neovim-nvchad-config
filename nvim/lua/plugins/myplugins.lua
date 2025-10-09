@@ -122,6 +122,57 @@ local plugins = {
     -- load the plugin at startup
     event = "VeryLazy",
   },
+
+  -- Github copilot replacement
+  -- {
+  --   "milanglacier/minuet-ai.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   event = "BufReadPre",
+  --   config = function()
+  --     require("minuet").setup {
+  --       virtualtext = {
+  --         keymap = {
+  --           accept_line = "<M-l>",
+  --           accept = "<M-z>",
+  --         },
+  --         auto_trigger_ft = {
+  --           "tf",
+  --           "terraform",
+  --           "python",
+  --           "groovy",
+  --           "java",
+  --           "shell",
+  --           "sh",
+  --           "ts",
+  --           "js",
+  --           "jenkinsfile",
+  --           "golang",
+  --           "go",
+  --         },
+  --       },
+  --       provider = "gemini",
+  --       provider_options = {
+  --         gemini = {
+  --           model = "gemini-2.5-flash",
+  --           stream = true,
+  --           optional = {
+  --             generationConfig = {
+  --               maxOutputTokens = 256,
+  --               thinkingConfig = { thinkingBudget = 0 },
+  --             },
+  --           },
+  --         },
+  --         claude = {
+  --           model = "claude-sonnet-4-5-20250929",
+  --           stream = true,
+  --           end_point = "https://delorean.auto1.team/proxy-api/anthropic",
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
 }
 
 return plugins
