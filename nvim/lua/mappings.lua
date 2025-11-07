@@ -19,5 +19,6 @@ map("n", "<leader>T", function()
     end
   end
   vim.notify("No terminal buffer found", vim.log.levels.WARN)
+end
 -- repeat last command with dot
 map("n", ",", "@:")

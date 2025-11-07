@@ -2,7 +2,7 @@ local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 -- Configure basic servers using new vim.lsp.config syntax
-local servers = { "html", "cssls", "gopls", "marksman", "terraformls", "rust_analyzer" }
+local servers = { "html", "cssls", "gopls", "marksman", "terraformls", "rust_analyzer", "jdtls" }
 
 for _, server in ipairs(servers) do
   vim.lsp.config(server, {
